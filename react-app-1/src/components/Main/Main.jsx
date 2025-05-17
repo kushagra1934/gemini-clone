@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Main.css"; // Import the CSS file for styling
 import { assets } from "../../assets/assets";
+import { Context } from "../../context/Context";
 
 const Main = () => {
+  // This component represents the main content area of the application.
+
+  const {
+    onSent,
+    recentPrompt,
+    prevPrompts,
+    showResult,
+    loading,
+    resultData,
+    input,
+    setInput,
+  } = useContext(Context);
+
   return (
     <div className="main">
       <div className="nav">
@@ -36,11 +50,16 @@ const Main = () => {
         </div>
         <div className="main-bottom">
           <div className="search-box">
-            <input type="text" placeholder="Enter a prompt here" />
+            <input
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+              type="text"
+              placeholder="Enter a prompt here"
+            />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img src={assets.send_icon} alt="" />
+              <img onClick={() => onSent()} src={assets.send_icon} alt="" />
             </div>
           </div>
           <p className="bottom-info">

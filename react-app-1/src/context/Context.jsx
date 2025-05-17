@@ -12,10 +12,29 @@ const ContextProvider = (props) => {
   const [resultData, setResultData] = useState("");
 
   const onSent = async (prompt) => {
-    await generateGeminiResponse(prompt);
+    setResultData("");
+    setLoading(true);
+    setShowResult(true);
+
+    const response = await generateGeminiResponse(input);
+
+    setResultData(response);
+    setLoading(false);
+    setInput("");
   };
 
-  const contextValue = {};
+  const contextValue = {
+    prevPrompts,
+    setPrevPrompts,
+    onSent,
+    setRecentPrompt,
+    recentPrompt,
+    showResult,
+    loading,
+    resultData,
+    input,
+    setInput,
+  };
 
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

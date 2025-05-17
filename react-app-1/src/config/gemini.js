@@ -30,14 +30,18 @@ async function generateGeminiResponse(prompt) {
       },
     ];
 
+    let fullResponse = "";
+
     const response = await ai.models.generateContentStream({
       model,
       config,
       contents,
     });
     for await (const chunk of response) {
-      console.log(chunk.text);
+      fullResponse += chunk.text;
     }
+    console.log(fullResponse);
+    return fullResponse;
   } catch (error) {
     console.error("Gemini API error:", error);
   }
