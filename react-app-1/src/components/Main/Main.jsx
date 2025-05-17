@@ -26,11 +26,11 @@ const Main = () => {
             <img src={assets.bulb_icon} alt="" />
           </div>
           <div className="card">
-            <p>Brainstorm teeam binding activitiesfor our work retreat</p>
+            <p>Brainstorm teeam binding activities for our work retreat</p>
             <img src={assets.message_icon} alt="" />
           </div>
           <div className="card">
-            <p>Improve the readability of the foloowing code</p>
+            <p>Improve the readability of the following code</p>
             <img src={assets.code_icon} alt="" />
           </div>
         </div>
