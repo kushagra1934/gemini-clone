@@ -15,7 +15,7 @@ const ContextProvider = (props) => {
     setResultData("");
     setLoading(true);
     setShowResult(true);
-
+    setRecentPrompt(input);
     const response = await generateGeminiResponse(input);
 
     setResultData(response);
